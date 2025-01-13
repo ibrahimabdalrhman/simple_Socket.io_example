@@ -5,6 +5,8 @@ dotenv.config();
 const cors = require("cors");
 const { Server } = require("socket.io");
 const http = require("http");
+const path = require('path');
+
 
 const managersRoute = require("./routes/managerRoute");
 const agentsRoute = require("./routes/agentRoute");
@@ -13,6 +15,13 @@ const ordersRoute = require("./routes/orderRoute");
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors()); // Enable CORS
+
+app.use(express.static(path.join(__dirname, 'public')));
+
+// Define routes or additional middleware if needed
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
 
 app.use("/api/managers", managersRoute);
 app.use("/api/agents", agentsRoute);
