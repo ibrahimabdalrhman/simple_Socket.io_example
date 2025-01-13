@@ -109,12 +109,12 @@
     </div>
 
     <script>
-      const socket = io("http://localhost:3000");
+      const socket = io("http://107.22.20.247:3000");
 
       async function fetchOrders() {
         try {
           const response = await axios.get(
-            "http://localhost:3000/api/orders/all-orders"
+            "http://107.22.20.247:3000/api/orders/all-orders"
           );
           renderOrders(response.data);
         } catch (err) {
@@ -154,7 +154,7 @@
         const managerId = document.getElementById("managerId").value;
 
         try {
-          await axios.post("http://localhost:3000/api/orders/new-order", {
+          await axios.post("http://107.22.20.247:3000/api/orders/new-order", {
             name: orderName,
             description: orderDescription,
             managerId: parseInt(managerId),
@@ -176,7 +176,7 @@
         const agentId = document.getElementById(`agent-${orderId}`).value;
         try {
           await axios.patch(
-            `http://localhost:3000/api/orders/update-order/${orderId}`,
+            `http://107.22.20.247:3000/api/orders/update-order/${orderId}`,
             { agentId }
           );
           alert("Agent updated successfully!");
@@ -194,7 +194,7 @@
 
         try {
           await axios.delete(
-            `http://localhost:3000/api/orders/delete-order/${orderId}`
+            `http://107.22.20.247:3000/api/orders/delete-order/${orderId}`
           );
           alert("Order deleted successfully!");
           fetchOrders(); // Refresh the orders

@@ -33,12 +33,12 @@
     <script>
       const urlParams = new URLSearchParams(window.location.search);
       const agentId = urlParams.get("agentId");
-      const socket = io("http://localhost:3000");
+      const socket = io("http://107.22.20.247:3000");
 
       async function fetchAgentOrders() {
         try {
           const response = await axios.get(
-            `http://localhost:3000/api/agents/${agentId}`
+            `http://107.22.20.247:3000/api/agents/${agentId}`
           );
           renderOrders(response.data);
         } catch (err) {
